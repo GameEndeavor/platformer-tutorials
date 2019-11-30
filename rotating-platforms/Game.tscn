@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ShapeDrawer.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://OrbitingPlatformsController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 256, 16 )
+
+[node name="Game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 544, 512 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+script = ExtResource( 1 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 544, 416 )
+
+[node name="OrbitingPlatformsController" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 160, 352 )
+radius = Vector2( 128, 128 )
+rotation_duration = 8.0
+
+[node name="Platform" parent="OrbitingPlatformsController" instance=ExtResource( 4 )]
+position = Vector2( -127.989, 1.67289 )
+
+[node name="Platform2" parent="OrbitingPlatformsController" instance=ExtResource( 4 )]
+position = Vector2( -1.67289, -127.989 )
+
+[node name="Platform3" parent="OrbitingPlatformsController" instance=ExtResource( 4 )]
+position = Vector2( 127.989, -1.67289 )
+
+[node name="Platform4" parent="OrbitingPlatformsController" instance=ExtResource( 4 )]
+position = Vector2( 1.67289, 127.989 )
+
+[node name="OrbitingPlatformsController2" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 928, 352 )
+radius = Vector2( 128, 128 )
+rotation_duration = -8.0
+
+[node name="Platform" parent="OrbitingPlatformsController2" instance=ExtResource( 4 )]
+position = Vector2( -127.989, -1.67289 )
+
+[node name="Platform2" parent="OrbitingPlatformsController2" instance=ExtResource( 4 )]
+position = Vector2( 1.67289, -127.989 )
+
+[node name="Platform3" parent="OrbitingPlatformsController2" instance=ExtResource( 4 )]
+position = Vector2( 127.989, 1.67289 )
+
+[node name="Platform4" parent="OrbitingPlatformsController2" instance=ExtResource( 4 )]
+position = Vector2( -1.67289, 127.989 )
